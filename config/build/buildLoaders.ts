@@ -1,21 +1,21 @@
-import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions } from './types/config';
+import type webpack from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { type BuildOptions } from './types/config'
 
-export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
   const svgLoader = {
     test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  };
+    use: ['@svgr/webpack']
+  }
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
     use: [
       {
-        loader: 'file-loader',
-      },
-    ],
-  };
+        loader: 'file-loader'
+      }
+    ]
+  }
 
   const scssLoader = {
     test: /\.s[ac]ss$/i,
@@ -29,20 +29,20 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
             auto: (resPath: string) => resPath.includes('.module.'),
             localIdentName: options.isDev
               ? '[path][name]__[local]'
-              : '[hash:base64:6]',
-          },
-        },
+              : '[hash:base64:6]'
+          }
+        }
       },
       // Compiles Sass to CSS
-      'sass-loader',
-    ],
-  };
+      'sass-loader'
+    ]
+  }
 
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
-    exclude: /node_modules/,
-  };
+    exclude: /node_modules/
+  }
 
   const babelLoader = {
     test: /\.(js|ts|tsx)$/,
@@ -56,13 +56,13 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
             'i18next-extract',
             {
               locales: ['ru', 'en'],
-              keyAsDefaultValue: true,
-            },
-          ],
-        ],
-      },
-    },
-  };
+              keyAsDefaultValue: true
+            }
+          ]
+        ]
+      }
+    }
+  }
 
-  return [babelLoader, svgLoader, fileLoader, scssLoader, typescriptLoader];
+  return [babelLoader, svgLoader, fileLoader, scssLoader, typescriptLoader]
 }

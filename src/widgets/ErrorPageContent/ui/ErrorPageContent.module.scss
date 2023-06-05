@@ -1,0 +1,14 @@
+.ErrorPageContent {
+  display: flex;
+  font: var(--font-l);
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+
+  button {
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+}

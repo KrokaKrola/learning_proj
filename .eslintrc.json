@@ -31,6 +31,8 @@
         "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/naming-convention": "off",
-        "@typescript-eslint/member-delimiter-style": "off"
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/space-before-function-paren": "off",
+        "n/handle-callback-err": "off"
     }
 }

@@ -1,11 +1,13 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
-        "standard-with-typescript"
+        "standard-with-typescript",
+        "plugin:i18next/recommended"
     ],
     "overrides": [
     ],
@@ -16,7 +18,8 @@
     },
     "plugins": [
         "react",
-        "prettier"
+        "prettier",
+        "i18next"
     ],
     "rules": {
         "@typescript-eslint/semi": "off",

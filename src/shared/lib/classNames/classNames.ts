@@ -7,9 +7,9 @@ export const classNames = (
 ): string => {
   return [
     cls,
-    ...additional.filter(Boolean),
-    ...Object.entries(mods)
+    ...Object.entries(mods || {})
       .filter(([_cls, value]) => Boolean(value))
       .map(([cls]) => cls),
+    ...(additional || []).filter(Boolean),
   ].join(' ');
 };

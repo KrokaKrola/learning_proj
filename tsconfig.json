@@ -23,7 +23,8 @@
     "./config/jest/setupTests.ts",
     ".eslintrc.json",
     "./src/**/*",
-    "./config/**/*"
+    "./config/**/*",
+    "./webpack.config.ts"
   ],
   "exclude": [
     "./node_modules/**/*"

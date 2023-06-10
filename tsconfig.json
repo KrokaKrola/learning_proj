@@ -24,7 +24,8 @@
     ".eslintrc.json",
     "./src/**/*",
     "./config/**/*",
-    "./webpack.config.ts"
+    "./webpack.config.ts",
+    "./scripts/**/*"
   ],
   "exclude": [
     "./node_modules/**/*"

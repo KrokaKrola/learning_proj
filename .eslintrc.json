@@ -6,6 +6,7 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
         "standard-with-typescript",
         "plugin:i18next/recommended",
         "plugin:storybook/recommended"
@@ -42,7 +43,9 @@
         "@typescript-eslint/naming-convention": "off",
         "@typescript-eslint/member-delimiter-style": "off",
         "@typescript-eslint/space-before-function-paren": "off",
-        "n/handle-callback-err": "off"
+        "n/handle-callback-err": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
     },
     "ignorePatterns": [
         "./node_modules/"

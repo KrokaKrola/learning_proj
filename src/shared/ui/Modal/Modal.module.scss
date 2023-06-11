@@ -1,0 +1,59 @@
+.Modal {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  color: var(--primary-color);
+}
+
+.Modal.light {
+  --bg-color: #e8e8ea;
+  --primary-color: #0232c2;
+  --secondary-color: #0449e0;
+  --inverted-primary-color: #04ff04;
+  --inverted-secondary-color: #04a304;
+}
+
+.Modal.dark {
+  --bg-color: #0e0e75;
+  --inverted-bg-color: #e8e8ea;
+  --primary-color: #04ff04;
+  --secondary-color: #04a304;
+  --inverted-primary-color: #0232c2;
+  --inverted-secondary-color: #0452ff;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--bg-color);
+  transition: 0.3s transform;
+  transform: scale(0.5);
+  max-width: 60%;
+}
+
+.opened {
+  pointer-events: auto;
+  opacity: 1;
+  z-index: var(--modal-z-index);
+
+  .content {
+    transform: scale(1);
+  }
+}
+
+.closing {
+  .content {
+    transform: scale(0.2);
+  }
+}

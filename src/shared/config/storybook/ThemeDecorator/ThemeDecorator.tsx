@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { Theme } from 'app/providers/ThemeProvider';
+import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
 
 export const ThemeDecorator = ({
   children,
@@ -8,5 +8,9 @@ export const ThemeDecorator = ({
   children: ReactNode;
   theme?: Theme;
 }) => {
-  return <div className={`app ${theme || Theme.LIGHT}`}>{children}</div>;
+  return (
+    <ThemeProvider initialTheme={theme}>
+      <div className={`app ${theme || Theme.LIGHT}`}>{children}</div>
+    </ThemeProvider>
+  );
 };

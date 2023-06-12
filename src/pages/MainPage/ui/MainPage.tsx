@@ -1,10 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Counter } from 'entities/Counter';
 
 const MainPage = () => {
   const { t } = useTranslation();
 
-  return <div>{t('Home')}</div>;
+  return (
+    <div>
+      {t('Home')} <Counter />
+    </div>
+  );
 };
 
 export default MainPage;

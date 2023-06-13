@@ -5,11 +5,7 @@ import { Counter } from 'entities/Counter';
 const MainPage = () => {
   const { t } = useTranslation();
 
-  return (
-    <div>
-      {t('Home')} <Counter />
-    </div>
-  );
+  return <div>{t('Home')}</div>;
 };
 
 export default MainPage;

@@ -45,7 +45,8 @@
         "@typescript-eslint/space-before-function-paren": "off",
         "n/handle-callback-err": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "@typescript-eslint/indent": "off"
     },
     "ignorePatterns": [
         "./node_modules/"

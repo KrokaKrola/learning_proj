@@ -17,19 +17,3 @@ export const Primary: Story = {
       'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ',
   },
 };
-
-// export const PrimaryDark: Story = {
-//   args: {
-//     isOpen: true,
-//     children:
-//       'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ',
-//   },
-// };
-//
-// PrimaryDark.decorators = [
-//   (Story) => (
-//     <ThemeDecorator theme={Theme.DARK}>
-//       <Story />
-//     </ThemeDecorator>
-//   ),
-// ];

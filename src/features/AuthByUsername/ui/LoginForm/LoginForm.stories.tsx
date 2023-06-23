@@ -3,7 +3,6 @@ import LoginForm from './LoginForm';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 
 const meta = {
   title: 'features/LoginForm',
@@ -27,9 +26,6 @@ Primary.decorators = [
           username: '123',
         },
       }}
-      asyncReducers={{
-        loginForm: loginReducer,
-      }}
     >
       <Story />
     </StoreDecorator>
@@ -49,9 +45,6 @@ WithError.decorators = [
           username: '123',
           error: 'Вы ввели неверный логин или пароль',
         },
-      }}
-      asyncReducers={{
-        loginForm: loginReducer,
       }}
     >
       <Story />
@@ -73,9 +66,6 @@ Loading.decorators = [
           isLoading: true,
         },
       }}
-      asyncReducers={{
-        loginForm: loginReducer,
-      }}
     >
       <Story />
     </StoreDecorator>
@@ -88,12 +78,7 @@ export const Dark: Story = {
 
 Dark.decorators = [
   (Story) => (
-    <StoreDecorator
-      initialState={{}}
-      asyncReducers={{
-        loginForm: loginReducer,
-      }}
-    >
+    <StoreDecorator initialState={{}}>
       <Story />
     </StoreDecorator>
   ),

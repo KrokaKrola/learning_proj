@@ -3,7 +3,6 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import ProfilePage from './ProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { profileReducer } from 'entities/Profile';
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -11,12 +10,7 @@ const meta = {
   argTypes: {},
   decorators: [
     (Story) => (
-      <StoreDecorator
-        initialState={{}}
-        asyncReducers={{
-          profile: profileReducer,
-        }}
-      >
+      <StoreDecorator initialState={{}}>
         <Story />
       </StoreDecorator>
     ),

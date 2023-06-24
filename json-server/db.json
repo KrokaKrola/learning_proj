@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Oleh",
+    "lastname": "Kazimov",
+    "age": 22,
+    "currency": "USD",
+    "country": "Ukraine",
+    "city": "Kiyv",
+    "username": "admin",
+    "avatar": "https://avatars.githubusercontent.com/u/123?v=4"
+  }
 }

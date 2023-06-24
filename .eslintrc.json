@@ -46,7 +46,8 @@
         "n/handle-callback-err": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
-        "@typescript-eslint/indent": "off"
+        "@typescript-eslint/indent": "off",
+        "react/display-name": "off"
     },
     "ignorePatterns": [
         "./node_modules/"

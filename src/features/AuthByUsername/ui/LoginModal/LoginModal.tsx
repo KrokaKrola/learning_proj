@@ -15,15 +15,17 @@ export const LoginModal: FC<LoginModalProps> = ({
   className,
   isOpen,
   onClose,
-}) => (
-  <Modal
-    className={classNames(cls.LoginModal, {}, [className])}
-    onClose={onClose}
-    isOpen={isOpen}
-    lazy
-  >
-    <Suspense fallback={<Loader />}>
-      <LoginFormAsync />
-    </Suspense>
-  </Modal>
-);
+}) => {
+  return (
+    <Modal
+      className={classNames(cls.LoginModal, {}, [className])}
+      onClose={onClose}
+      isOpen={isOpen}
+      lazy
+    >
+      <Suspense fallback={<Loader />}>
+        <LoginFormAsync onSuccess={onClose} />
+      </Suspense>
+    </Modal>
+  );
+};

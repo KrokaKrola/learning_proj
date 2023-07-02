@@ -6,29 +6,46 @@ import {
 import {
   fetchProfileData,
   getProfileError,
+  getProfileForm,
   getProfileIsLoading,
   getProfileReadOnly,
+  getProfileValidateErrors,
   profileActions,
   ProfileCard,
   profileReducer,
-  getProfileForm,
+  ValidateProfileError,
 } from 'entities/Profile';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { type Currency } from 'entities/Currency';
 import { type Country } from 'entities/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 
 const reducers: ReducersList = {
   profile: profileReducer,
 };
 
 const ProfilePage = () => {
+  const { t } = useTranslation('profile');
   const dispatch = useDispatch();
 
   const formData = useSelector(getProfileForm);
   const error = useSelector(getProfileError);
   const isLoading = useSelector(getProfileIsLoading);
   const readOnly = useSelector(getProfileReadOnly);
+  const validateErrors = useSelector(getProfileValidateErrors);
+
+  const validateErrorTranslates = {
+    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+    [ValidateProfileError.INCORRECT_AVATAR]: t('Некорректный аватар'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректная страна'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t(
+      'Некорректные данные пользователя'
+    ),
+    [ValidateProfileError.NO_DATA]: t('Нет данных'),
+    [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера'),
+  };
 
   useEffect(() => {
     dispatch(fetchProfileData());
@@ -125,6 +142,14 @@ const ProfilePage = () => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <ProfilePageHeader />
+      {validateErrors?.length &&
+        validateErrors.map((err) => (
+          <Text
+            key={err}
+            theme={TextTheme.ERROR}
+            text={validateErrorTranslates[err]}
+          />
+        ))}
       <ProfileCard
         data={formData}
         isLoading={isLoading}

@@ -8,13 +8,7 @@ const meta = {
   title: 'widgets/Sidebar',
   component: Sidebar,
   argTypes: {},
-  decorators: [
-    (Story) => (
-      <StoreDecorator initialState={{}}>
-        <Story />
-      </StoreDecorator>
-    ),
-  ],
+  decorators: [],
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;
@@ -24,6 +18,14 @@ export const Light: Story = {
   args: {},
 };
 
+Light.decorators = [
+  (Story) => (
+    <StoreDecorator initialState={{}}>
+      <Story />
+    </StoreDecorator>
+  ),
+];
+
 export const Dark: Story = {
   args: {},
 };
@@ -31,7 +33,30 @@ export const Dark: Story = {
 Dark.decorators = [
   (Story) => (
     <ThemeDecorator theme={Theme.DARK}>
-      <Story />
+      <StoreDecorator initialState={{}}>
+        <Story />
+      </StoreDecorator>
     </ThemeDecorator>
+  ),
+];
+
+export const Auth: Story = {
+  args: {},
+};
+
+Auth.decorators = [
+  (Story) => (
+    <StoreDecorator
+      initialState={{
+        user: {
+          authData: {
+            username: 'admin',
+            id: '1',
+          },
+        },
+      }}
+    >
+      <Story />
+    </StoreDecorator>
   ),
 ];

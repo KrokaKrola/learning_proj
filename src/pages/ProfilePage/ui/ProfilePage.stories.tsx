@@ -31,7 +31,7 @@ Primary.decorators = [
             city: 'Kiyv',
             first: 'admin',
             lastname: 'admin',
-            avatar: 'https://www.gravatar.com/avatar/123456789',
+            avatar: '',
           },
         },
       }}
@@ -58,7 +58,7 @@ Dark.decorators = [
               city: 'Kiyv',
               first: 'admin',
               lastname: 'admin',
-              avatar: 'https://www.gravatar.com/avatar/123456789',
+              avatar: '',
             },
           },
         }}

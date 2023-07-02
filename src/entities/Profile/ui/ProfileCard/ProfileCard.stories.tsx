@@ -23,7 +23,7 @@ export const Primary: Story = {
       city: 'Kiyv',
       first: 'admin',
       lastname: 'admin',
-      avatar: 'https://www.gravatar.com/avatar/123456789',
+      avatar: '',
     },
   },
 };

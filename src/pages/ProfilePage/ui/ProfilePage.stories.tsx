@@ -5,7 +5,6 @@ import ProfilePage from './ProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import avatar from 'shared/assets/tests/img.png';
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -32,7 +31,7 @@ Primary.decorators = [
             city: 'Kiyv',
             first: 'admin',
             lastname: 'admin',
-            avatar,
+            avatar: 'https://www.gravatar.com/avatar/123456789',
           },
         },
       }}
@@ -59,7 +58,7 @@ Dark.decorators = [
               city: 'Kiyv',
               first: 'admin',
               lastname: 'admin',
-              avatar,
+              avatar: 'https://www.gravatar.com/avatar/123456789',
             },
           },
         }}

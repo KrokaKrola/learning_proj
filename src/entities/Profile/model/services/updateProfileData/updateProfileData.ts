@@ -12,7 +12,6 @@ export const updateProfileData = createAsyncThunk<
   'profile/updateProfileData',
   async (_, { rejectWithValue, extra, getState }) => {
     const formData = getProfileForm(getState());
-
     const errors = validateProfileData(formData);
 
     if (errors.length) {
@@ -21,6 +20,10 @@ export const updateProfileData = createAsyncThunk<
 
     try {
       const response = await extra.api.put<Profile>('/profile', formData);
+
+      if (!response.data) {
+        throw new Error('No server data');
+      }
 
       return response.data;
     } catch (err) {

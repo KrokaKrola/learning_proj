@@ -3,9 +3,11 @@
 @import './variables/global';
 @import './themes/normal';
 @import './themes/dark';
+@import './themes/orange';
 
 .app_dark_theme,
-.app_light_theme {
+.app_light_theme,
+.app_orange_theme {
   font: var(--font-m);
   color: var(--primary-color);
 }

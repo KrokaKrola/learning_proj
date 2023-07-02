@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Sidebar.module.scss';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
@@ -6,6 +6,8 @@ import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { SidebarItemsList } from 'widgets/Sidebar/model/items';
 import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 
 interface SidebarProps {
   className?: string;
@@ -14,9 +16,21 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
+  const isAuth = useSelector(getUserAuthData);
+
   const onToggle = () => {
     setCollapsed(!collapsed);
   };
+
+  const sidebarItems = useMemo(() => {
+    return SidebarItemsList.filter((sidebarItem) => {
+      if (sidebarItem.authOnly && !isAuth) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [isAuth]);
 
   return (
     <aside
@@ -36,7 +50,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         {collapsed ? '>' : '<'}
       </Button>
       <div className={cls.items}>
-        {SidebarItemsList.map((sidebarItem, index) => (
+        {sidebarItems.map((sidebarItem, index) => (
           <SidebarItem
             item={sidebarItem}
             key={sidebarItem.path}

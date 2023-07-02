@@ -12,24 +12,25 @@ export default ({ config }: { config: webpack.Configuration }) => {
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
 
-  config.resolve.modules.push(paths.src);
-  config.resolve.extensions.push('.ts', '.tsx');
+  config!.resolve!.modules!.push(paths.src);
+  config!.resolve!.extensions!.push('.ts', '.tsx');
 
-  config.module.rules = config.module.rules.map((rule: webpack.RuleSetRule) => {
+  config.module!.rules = config.module!.rules!.map((rule) => {
+    const ruleSet = rule as webpack.RuleSetRule;
     // eslint-disable-next-line
-    if (/svg/.test(rule.test as string)) {
+    if (/svg/.test(ruleSet.test as string)) {
       return {
-        ...rule,
+        ...ruleSet,
         exclude: /\.svg$/i,
       };
     }
     return rule;
   });
 
-  config.module.rules.push(buildCssLoader(true));
-  config.module.rules.push(buildSvgLoader());
+  config.module!.rules.push(buildCssLoader(true));
+  config.module!.rules.push(buildSvgLoader());
 
-  config.plugins.push(
+  config.plugins!.push(
     new webpack.DefinePlugin({
       __IS_DEV__: true,
       __API__: JSON.stringify('http://localhost:3000'),

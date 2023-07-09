@@ -35,7 +35,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
     dispatch(fetchCommentsByArticleId(params.id));
   }, [dispatch, params.id]);
 
-  if (!params.id) {
+  if (!params.id && __PROJECT__ !== 'storybook') {
     return (
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         {t('Статья не найдена')}
@@ -46,7 +46,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducersList}>
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-        <ArticleDetails id={params.id} />
+        <ArticleDetails id={params.id as string} />
         <Text title={t('Комментарии')} className={cls.commentsTitle} />
         <CommentList comments={comments} isLoading={isLoading} />
       </div>

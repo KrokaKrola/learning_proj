@@ -33,4 +33,9 @@ jobs:
       - name: screenshot testing
         run: npm run test:ui:ci
         if: always()
-
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: .loki
+          retention-days: 1

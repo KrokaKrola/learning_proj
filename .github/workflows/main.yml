@@ -39,3 +39,4 @@ jobs:
           name: code-coverage-report
           path: .loki
           retention-days: 1
+        if: always()

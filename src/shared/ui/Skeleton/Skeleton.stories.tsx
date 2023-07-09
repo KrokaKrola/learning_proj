@@ -16,6 +16,7 @@ export const Primary: Story = {
   args: {
     width: '100%',
     height: 200,
+    withAnimation: false,
   },
 };
 
@@ -23,6 +24,7 @@ export const PrimaryDark: Story = {
   args: {
     width: '100%',
     height: 200,
+    withAnimation: false,
   },
 };
 
@@ -39,6 +41,7 @@ export const Circle: Story = {
     border: '50%',
     width: 100,
     height: 100,
+    withAnimation: false,
   },
 };
 
@@ -47,6 +50,7 @@ export const CircleDark: Story = {
     border: '50%',
     width: 100,
     height: 100,
+    withAnimation: false,
   },
 };
 

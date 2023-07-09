@@ -7,6 +7,7 @@ interface SkeletonProps {
   height?: string | number;
   width?: string | number;
   border?: string;
+  withAnimation?: boolean;
 }
 
 export const Skeleton: FC<SkeletonProps> = ({
@@ -14,6 +15,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   height,
   border,
   width,
+  withAnimation = true,
 }) => {
   const styles: CSSProperties = {
     width,
@@ -24,7 +26,11 @@ export const Skeleton: FC<SkeletonProps> = ({
   return (
     <div
       style={styles}
-      className={classNames(cls.Skeleton, {}, [className])}
+      className={classNames(
+        cls.Skeleton,
+        { [cls.withAnimation]: withAnimation },
+        [className]
+      )}
     ></div>
   );
 };

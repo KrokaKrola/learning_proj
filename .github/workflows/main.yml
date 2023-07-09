@@ -31,6 +31,7 @@ jobs:
         run: npm run storybook:build
         if: always()
       - name: screenshot testing
+        id: screenshotTesting
         run: npm run test:ui:ci
         if: always()
       - name: Archive artifacts
@@ -39,4 +40,4 @@ jobs:
           name: code-coverage-report
           path: .loki
           retention-days: 1
-        if: always()
+        if: ${{ failure() && steps.screenshotTesting.conclusion == 'failure' }}

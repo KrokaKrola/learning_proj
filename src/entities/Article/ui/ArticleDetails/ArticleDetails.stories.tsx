@@ -107,27 +107,27 @@ Primary.decorators = [
   },
 ];
 
-export const Loading: Story = {
-  args: {
-    id: '1',
-  },
-};
-
-Loading.decorators = [
-  (Story) => {
-    return (
-      <StoreDecorator
-        initialState={{
-          articleDetails: {
-            isLoading: true,
-          },
-        }}
-      >
-        <Story />
-      </StoreDecorator>
-    );
-  },
-];
+// export const Loading: Story = {
+//   args: {
+//     id: '1',
+//   },
+// };
+//
+// Loading.decorators = [
+//   (Story) => {
+//     return (
+//       <StoreDecorator
+//         initialState={{
+//           articleDetails: {
+//             isLoading: true,
+//           },
+//         }}
+//       >
+//         <Story />
+//       </StoreDecorator>
+//     );
+//   },
+// ];
 
 export const Error: Story = {
   args: {

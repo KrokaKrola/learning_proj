@@ -12,13 +12,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  args: {
-    width: '100%',
-    height: 200,
-    withAnimation: false,
-  },
-};
+// export const Primary: Story = {
+//   args: {
+//     width: '100%',
+//     height: 200,
+//     withAnimation: false,
+//   },
+// };
 
 export const PrimaryDark: Story = {
   args: {

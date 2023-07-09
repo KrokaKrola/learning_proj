@@ -1,6 +1,7 @@
 import { type CSSProperties, type FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Skeleton.module.scss';
+import { IS_STORYBOOK } from 'shared/const/project';
 
 interface SkeletonProps {
   className?: string;
@@ -15,7 +16,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   height,
   border,
   width,
-  withAnimation = true,
+  withAnimation = !IS_STORYBOOK,
 }) => {
   const styles: CSSProperties = {
     width,

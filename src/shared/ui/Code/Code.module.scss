@@ -1,0 +1,20 @@
+.Code {
+  border: 1px solid var(--primary-color);
+  padding: 20px;
+  position: relative;
+  background: var(--code-bg);
+
+  code {
+    word-break: break-word;
+    text-wrap: initial;
+  }
+}
+
+.copyBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

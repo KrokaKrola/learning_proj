@@ -43,9 +43,9 @@ export const Primary: Story = {
   },
 };
 
-export const Loading: Story = {
-  args: {
-    isLoading: true,
-    comments: [],
-  },
-};
+// export const Loading: Story = {
+//   args: {
+//     isLoading: true,
+//     comments: [],
+//   },
+// };

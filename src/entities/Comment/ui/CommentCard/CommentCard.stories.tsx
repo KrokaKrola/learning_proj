@@ -25,18 +25,18 @@ export const Primary: Story = {
   },
 };
 
-export const Loading: Story = {
-  args: {
-    isLoading: true,
-    comment: {
-      id: '1',
-      text: 'This is a comment',
-      user: {
-        id: '1',
-        username: 'John Doe',
-        avatar:
-          'https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj',
-      },
-    },
-  },
-};
+// export const Loading: Story = {
+//   args: {
+//     isLoading: true,
+//     comment: {
+//       id: '1',
+//       text: 'This is a comment',
+//       user: {
+//         id: '1',
+//         username: 'John Doe',
+//         avatar:
+//           'https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj',
+//       },
+//     },
+//   },
+// };

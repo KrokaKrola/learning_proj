@@ -1,4 +1,4 @@
-import { type FC, memo, useCallback } from 'react';
+import { type FC, memo, Suspense, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetailsPage.module.scss';
@@ -57,7 +57,9 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <ArticleDetails id={params.id as string} />
         <Text title={t('Комментарии')} className={cls.commentsTitle} />
-        <AddCommentForm onSendComment={onSendComment} />
+        <Suspense fallback="">
+          <AddCommentForm onSendComment={onSendComment} />
+        </Suspense>
         <CommentList comments={comments} isLoading={isLoading} />
       </div>
     </DynamicModuleLoader>

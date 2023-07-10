@@ -1,4 +1,4 @@
-import { type FC, memo } from 'react';
+import { type FC, memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetailsPage.module.scss';
@@ -14,7 +14,9 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/articleDetailsCommentsSelectors';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddCommentForm } from 'features/addCommentForm';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -35,6 +37,13 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
     dispatch(fetchCommentsByArticleId(params.id));
   }, [dispatch, params.id]);
 
+  const onSendComment = useCallback(
+    (text: string) => {
+      dispatch(addCommentForArticle(text));
+    },
+    [dispatch]
+  );
+
   if (!params.id && __PROJECT__ !== 'storybook') {
     return (
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -48,6 +57,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <ArticleDetails id={params.id as string} />
         <Text title={t('Комментарии')} className={cls.commentsTitle} />
+        <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={isLoading} />
       </div>
     </DynamicModuleLoader>

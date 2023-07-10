@@ -19,7 +19,7 @@ describe('fetchProfileData.test', function () {
 
     thunk.api.get.mockResolvedValue(Promise.resolve({ data }));
 
-    const result = await thunk.callThunk(undefined);
+    const result = await thunk.callThunk('1');
 
     expect(thunk.api.get).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('fulfilled');

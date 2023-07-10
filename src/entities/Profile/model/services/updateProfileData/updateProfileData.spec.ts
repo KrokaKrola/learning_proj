@@ -5,6 +5,7 @@ import { Currency } from 'entities/Currency';
 import { ValidateProfileError } from '../../types/profile';
 
 const data = {
+  id: '1',
   username: 'admin',
   age: 22,
   country: Country.Ukraine,
@@ -25,7 +26,7 @@ describe('fetchProfileData.test', function () {
 
     thunk.api.put.mockResolvedValue(Promise.resolve({ data }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk('1');
 
     expect(thunk.api.put).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('fulfilled');
@@ -57,7 +58,7 @@ describe('fetchProfileData.test', function () {
       },
     });
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk('1');
 
     expect(result.meta.requestStatus).toBe('rejected');
     expect(result.payload).toEqual([ValidateProfileError.INCORRECT_USER_DATA]);

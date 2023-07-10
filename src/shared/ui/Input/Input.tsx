@@ -8,10 +8,11 @@ import {
 } from 'react';
 import { classNames, type Mods } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { type DefaultTFuncReturn } from 'i18next';
 
 type HtmlInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange' | 'readOnly'
+  'value' | 'onChange' | 'readOnly' | 'placeholder'
 >;
 
 interface InputProps extends HtmlInputProps {
@@ -20,6 +21,7 @@ interface InputProps extends HtmlInputProps {
   onChange?: (value: string) => void;
   autofocus?: boolean;
   readOnly?: boolean;
+  placeholder?: string | DefaultTFuncReturn;
 }
 
 export const Input: FC<InputProps> = memo((props: InputProps) => {

@@ -4,7 +4,7 @@ import cls from './CommentList.module.scss';
 import { type Comment } from '../../model/types/comment';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { CommentCard } from '../CommentCard/CommentCard';
+import { CommentCard } from 'entities/Comment';
 
 interface CommentListProps {
   className?: string;
@@ -15,6 +15,18 @@ interface CommentListProps {
 export const CommentList = memo((props: CommentListProps) => {
   const { className, comments, isLoading } = props;
   const { t } = useTranslation();
+
+  if (isLoading) {
+    return (
+      <div
+        className={classNames(cls.CommentList, {}, [className, cls.loading])}
+      >
+        <CommentCard isLoading className={cls.comment} />
+        <CommentCard isLoading className={cls.comment} />
+        <CommentCard isLoading className={cls.comment} />
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(cls.CommentList, {}, [className])}>

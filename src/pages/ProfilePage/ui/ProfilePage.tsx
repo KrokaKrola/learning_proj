@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import {
   DynamicModuleLoader,
   type ReducersList,
@@ -21,6 +21,8 @@ import { type Currency } from 'entities/Currency';
 import { type Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -36,6 +38,8 @@ const ProfilePage = () => {
   const readOnly = useSelector(getProfileReadOnly);
   const validateErrors = useSelector(getProfileValidateErrors);
 
+  const params = useParams<{ id: string }>();
+
   const validateErrorTranslates = {
     [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
     [ValidateProfileError.INCORRECT_AVATAR]: t('Некорректный аватар'),
@@ -47,11 +51,11 @@ const ProfilePage = () => {
     [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера'),
   };
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
+  useInitialEffect(() => {
+    if (params.id) {
+      dispatch(fetchProfileData(params.id));
     }
-  }, [dispatch]);
+  }, [dispatch, params.id]);
 
   const onChangeFirstName = useCallback(
     (value?: string) => {
